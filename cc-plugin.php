@@ -808,7 +808,8 @@ function cc_addon_import_artist_function($post_id, $data, $import_options, $arti
     meta_query => array(
       array (
         'key' => 'migrate_id',
-        'post__in' => $location_posts
+        'value' => $location_posts,
+        'compare' => 'IN'
       )
     )
   ));
