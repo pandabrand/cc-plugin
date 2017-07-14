@@ -381,6 +381,165 @@ function culture_collide_cpt() {
     'has_archive' => true
   ));
 
+  if( function_exists('acf_add_local_field_group') ):
+
+  acf_add_local_field_group(array (
+  	'key' => 'group_59678d15071c3',
+  	'title' => 'Artist Field Group',
+  	'fields' => array (
+  		array (
+  			'key' => 'field_59678d21bb4dc',
+  			'label' => 'Excerpt Title',
+  			'name' => 'excerpt_title',
+  			'type' => 'text',
+  			'instructions' => 'Short title',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array (
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'default_value' => '',
+  			'placeholder' => '',
+  			'prepend' => '',
+  			'append' => '',
+  			'maxlength' => '',
+  		),
+  		array (
+  			'key' => 'field_59678d40bb4dd',
+  			'label' => 'Artist City',
+  			'name' => 'artist_city',
+  			'type' => 'relationship',
+  			'instructions' => '',
+  			'required' => 1,
+  			'conditional_logic' => 0,
+  			'wrapper' => array (
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'post_type' => array (
+  				0 => 'city',
+  			),
+  			'taxonomy' => array (
+  			),
+  			'filters' => array (
+  				0 => 'search',
+  			),
+  			'elements' => '',
+  			'min' => 1,
+  			'max' => 1,
+  			'return_format' => 'object',
+  		),
+  		array (
+  			'key' => 'field_59678d95bb4de',
+  			'label' => 'Artists Locations',
+  			'name' => 'artists_locations',
+  			'type' => 'repeater',
+  			'instructions' => '',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array (
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'collapsed' => '',
+  			'min' => 0,
+  			'max' => 0,
+  			'layout' => 'row',
+  			'button_label' => 'Add Location',
+  			'sub_fields' => array (
+  				array (
+  					'key' => 'field_59678dd0bb4df',
+  					'label' => 'Location',
+  					'name' => 'location',
+  					'type' => 'relationship',
+  					'instructions' => '',
+  					'required' => 0,
+  					'conditional_logic' => 0,
+  					'wrapper' => array (
+  						'width' => '',
+  						'class' => '',
+  						'id' => '',
+  					),
+  					'post_type' => array (
+  						0 => 'location',
+  					),
+  					'taxonomy' => array (
+  					),
+  					'filters' => array (
+  						0 => 'search',
+  						1 => 'post_type',
+  					),
+  					'elements' => '',
+  					'min' => '',
+  					'max' => '',
+  					'return_format' => 'object',
+  				),
+  				array (
+  					'key' => 'field_59678e0ebb4e0',
+  					'label' => 'Location Comments',
+  					'name' => 'location_comments',
+  					'type' => 'textarea',
+  					'instructions' => '',
+  					'required' => 0,
+  					'conditional_logic' => 0,
+  					'wrapper' => array (
+  						'width' => '',
+  						'class' => '',
+  						'id' => '',
+  					),
+  					'default_value' => '',
+  					'placeholder' => '',
+  					'maxlength' => '',
+  					'rows' => 4,
+  					'new_lines' => 'wpautop',
+  				),
+  			),
+  		),
+  		array (
+  			'key' => 'field_59678e51bb4e1',
+  			'label' => 'Featured',
+  			'name' => 'featured',
+  			'type' => 'true_false',
+  			'instructions' => '',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array (
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'message' => '',
+  			'default_value' => 0,
+  			'ui' => 1,
+  			'ui_on_text' => '',
+  			'ui_off_text' => '',
+  		),
+  	),
+  	'location' => array (
+  		array (
+  			array (
+  				'param' => 'post_type',
+  				'operator' => '==',
+  				'value' => 'artist',
+  			),
+  		),
+  	),
+  	'menu_order' => 0,
+  	'position' => 'normal',
+  	'style' => 'default',
+  	'label_placement' => 'top',
+  	'instruction_placement' => 'label',
+  	'hide_on_screen' => '',
+  	'active' => 1,
+  	'description' => '',
+  ));
+
+  endif;
+  
   //Location post type
   register_post_type( 'location', array(
     'labels' => array(
