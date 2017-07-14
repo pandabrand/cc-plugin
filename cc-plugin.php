@@ -84,7 +84,7 @@ function culture_collide_cpt() {
     'has_archive' => true
   ));
 
-  include 'radip-addon.php';
+  include 'rapid-addon.php';
   $cc_addon = new RapidAddon('CC Add-On', 'cc_addon');
   $cc_addon->add_acf_field('location_city');
   $cc_addon->set_import_function('my_addon_import_function');
