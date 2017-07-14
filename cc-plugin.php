@@ -120,7 +120,7 @@ function culture_collide_cpt() {
           update_field('location_city', $city_to_add['ID']);
           //next level set the return relatioship
           $cc_addon->log( '- Adding return reference of location to city by ID: ' . $post_id );
-          update_field('locations', $post_id, $city_to_add['ID'])
+          update_field('locations', $post_id, $city_to_add['ID']);
         }
       }
     }
