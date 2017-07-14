@@ -158,10 +158,16 @@ function cc_addon_import_function($post_id, $data, $import_options, $article) {
     $city_to_add = $city_posts[0];
     write_log("city_posts not empty : " . $city_to_add->ID);
     $cc_addon->log( "- Adding city to location by ID: " . $city_to_add->ID );
-    update_field("location_city", $city_to_add->ID);
+    $field_obj = get_field_object('location_city', $post_id);
+    write_log("field object: " . $field_obj["key"] . " : " . $field_obj["label"]);
+    // update_field("location_city", $city_to_add->ID, $post_id);
+    update_post_meta( $post_id, $field_obj["key"],$city_to_add->ID );
     //next level set the return relatioship
+    write_log("Trying reverse assigment " );
     $cc_addon->log( "- Adding return reference of location to city by ID: " . $post_id );
-    update_field("locations", $post_id, $city_to_add->ID);
+    // update_field("locations", $post_id, $city_to_add->ID);
+    $city_obj = get_field_object('locations', $city_to_add->ID);
+    update_post_meta( $city_to_add->ID, $city_obj["key"], $post_id );
   }
 }
 
