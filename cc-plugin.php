@@ -88,12 +88,12 @@ function culture_collide_cpt() {
   $cc_addon = new RapidAddon('CC Add-On', 'cc_addon');
   $cc_addon->add_field('location_city', 'Location City', 'relationship');
   $cc_addon->set_import_function('my_addon_import_function');
-  $my_addon->run(
+  $cc_addon->run(
   	array(
   		"post_types" => array( "location" ),
   	)
   );
-  $my_addon->admin_notice(
+  $cc_addon->admin_notice(
     "This Add-On requires WP All Import and the Culture Collide theme.",
 	array(
 		"themes"  => array( "Sage Starter" ),
