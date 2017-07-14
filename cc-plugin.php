@@ -539,7 +539,7 @@ function culture_collide_cpt() {
   ));
 
   endif;
-  
+
   //Location post type
   register_post_type( 'location', array(
     'labels' => array(
@@ -743,14 +743,76 @@ function cc_addon_import_function($post_id, $data, $import_options, $article) {
   if(!empty($city_posts)) {
     $city_to_add = $city_posts[0];
     write_log("city_posts not empty : " . $city_to_add->ID);
-    // $cc_addon->log( "- Adding city to location by ID: " . $city_to_add->ID );
     update_field("field_5968371eb1dd1", $city_to_add, $post_id);
-    // update_post_meta( $post_id, 'field_5968371eb1dd1', $city_to_add->ID );
     //next level set the return relatioship
     write_log("Trying reverse assigment " );
-    // $cc_addon->log( "- Adding return reference of location to city by ID: " . $post_id );
     update_field("field_596837767f979", $article, $city_to_add->ID);
-    // update_post_meta( $city_to_add->ID, 'field_596837767f979', $post_id );
+  }
+}
+
+
+if ( ! function_exists('write_log')) {
+   function write_log ( $log )  {
+      if ( is_array( $log ) || is_object( $log ) ) {
+         error_log( print_r( $log, true ) );
+      } else {
+         error_log( $log );
+      }
+   }
+}
+
+$cc_artist_addon = new RapidAddon("CC Artist Add-On","cc_artist_addon");
+$cc_artist_addon->add_field("city_migrate_id", "City ID", "text");
+$cc_artist_addon->add_field("location_migrate_id", "Location IDs", "text");
+$cc_artist_addon->set_import_function("cc_addon_import_artist_function");
+$cc_artist_addon->admin_notice(
+  "This Add-On requires WP All Import and the Culture Collide theme.",
+  array(
+    "themes"  => array( "Sage Starter" )
+    )
+);
+$cc_artist_addon->run(
+  array(
+    "post_types" => array( "artist" ),
+  )
+);
+
+function cc_addon_import_artist_function($post_id, $data, $import_options, $article) {
+  $city_id = $data['city_migrate_id'];
+  write_log("starting import get city posts: " . $city_id);
+  $city_posts = get_posts(array(
+    'posts_per_page' => 1,
+    'post_type' => 'city',
+    'meta_query' => array(
+        array(
+          'key' => 'migrate_id',
+          'value' => $city_id
+        )
+      )
+  ));
+
+  if(!empty($city_posts)) {
+    $city_to_add = $city_posts[0];
+    write_log("city_posts not empty : " . $city_to_add->ID);
+    update_field("field_59678d40bb4dd", $city_to_add, $post_id);
+    //next level set the return relatioship
+    write_log("Trying reverse assigment " );
+    update_field("field_596837767f979", get_post($post_id), $city_to_add->ID);
+  }
+  $location_str = $data['location_migrate_id'];
+  $location_arr = explode(",", $Location_str);
+  $location_posts = get_posts(array(
+    posts_per_page => -1,
+    post_type => 'location',
+    meta_query => array(
+      array (
+        'key' => 'migrate_id',
+        'post__in' => $location_posts
+      )
+    )
+  ));
+  foreach($location_posts as $location_post) {
+    update_field("field_59678d95bb4de", $location_post, $post_id);
   }
 }
 
