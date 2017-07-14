@@ -84,4 +84,45 @@ function culture_collide_cpt() {
     'has_archive' => true
   ));
 
+  include 'radip-addon.php';
+  $cc_addon = new RapidAddon('CC Add-On', 'cc_addon');
+  $cc_addon->add_acf_field('location_city');
+  $cc_addon->set_import_function('my_addon_import_function');
+  $my_addon->run(
+  	array(
+  		"post_types" => array( "location" ),
+  	)
+  );
+  $my_addon->admin_notice(
+    "This Add-On requires WP All Import and the Culture Collide theme.",
+	array(
+		"themes"  => array( "Sage Starter" ),
+  	// "plugins" => array( "wp-all-export/wp-all-export.php" )
+    )
+  );
+
+  function set_import_function($post_id, $data, $import_options, $article) {
+    global $cc_addon;
+    $fields = array(
+      'location_city'
+    );
+    foreach ($fields as $field) {
+      if($cc_addon->can_update_meta( 'location_city', $import_options ) ) {
+        $city_posts = get_posts(array(
+        	'numberposts' => 1,
+        	'post_type' => 'city',
+        	'meta_key' => 'migrate_id',
+        	'meta_value' => $data['location_city_id']
+        ));
+        if(!empty($city_posts)) {
+          $city_to_add = $city_posts[0];
+          $cc_addon->log( '- Adding city to location by ID: ' . $city_to_add['ID'] );
+          update_field('location_city', $city_to_add['ID']);
+          //next level set the return relatioship
+          $cc_addon->log( '- Adding return reference of location to city by ID: ' . $post_id );
+          update_field('locations', $post_id, $city_to_add['ID'])
+        }
+      }
+    }
+  }
 }
