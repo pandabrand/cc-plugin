@@ -585,13 +585,13 @@ function cc_addon_import_function($post_id, $data, $import_options, $article) {
     $city_to_add = $city_posts[0];
     write_log("city_posts not empty : " . $city_to_add->ID);
     $cc_addon->log( "- Adding city to location by ID: " . $city_to_add->ID );
-    // update_field("location_city", $city_to_add->ID, $post_id);
-    update_post_meta( $post_id, 'field_5968371eb1dd1', $city_to_add->ID );
+    update_field("field_5968371eb1dd1", $city_to_add, $post_id);
+    // update_post_meta( $post_id, 'field_5968371eb1dd1', $city_to_add->ID );
     //next level set the return relatioship
     write_log("Trying reverse assigment " );
     $cc_addon->log( "- Adding return reference of location to city by ID: " . $post_id );
-    // update_field("locations", $post_id, $city_to_add->ID);
-    update_post_meta( $city_to_add->ID, 'field_596837767f979', $post_id );
+    update_field("field_596837767f979", $article, $city_to_add->ID);
+    // update_post_meta( $city_to_add->ID, 'field_596837767f979', $post_id );
   }
 }
 
