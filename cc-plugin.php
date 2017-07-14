@@ -801,6 +801,7 @@ function cc_addon_import_artist_function($post_id, $data, $import_options, $arti
   }
 
   $location_str = $data['location_migrate_id'];
+  write_log("location id string: " . $location_str);
   $location_arr = explode(",", $location_str);
   $location_posts = get_posts(array(
     posts_per_page => -1,
@@ -808,7 +809,7 @@ function cc_addon_import_artist_function($post_id, $data, $import_options, $arti
     meta_query => array(
       array (
         'key' => 'migrate_id',
-        'value' => $location_posts,
+        'value' => $location_arr,
         'compare' => 'IN'
       )
     )
