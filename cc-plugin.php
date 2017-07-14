@@ -86,6 +86,112 @@ function culture_collide_cpt() {
   ));
 }
 
+if( function_exists('acf_add_local_field_group') ):
+
+acf_add_local_field_group(array (
+	'key' => 'group_59678f2509069',
+	'title' => 'Location Field Group',
+	'fields' => array (
+		array (
+			'key' => 'field_59678f327c532',
+			'label' => 'Address',
+			'name' => 'address',
+			'type' => 'google_map',
+			'instructions' => '',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'center_lat' => '',
+			'center_lng' => '',
+			'zoom' => '',
+			'height' => 200,
+		),
+		array (
+			'key' => 'field_59678f517c533',
+			'label' => 'Website',
+			'name' => 'website',
+			'type' => 'url',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+		),
+		array (
+			'key' => 'field_59685c31a8fd6',
+			'label' => 'Photo Credit',
+			'name' => 'photo_credit',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+		),
+		array (
+			'key' => 'field_5968371eb1dd1',
+			'label' => 'Location City',
+			'name' => 'location_city',
+			'type' => 'relationship',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'post_type' => array (
+				0 => 'city',
+			),
+			'taxonomy' => array (
+			),
+			'filters' => array (
+				0 => 'search',
+			),
+			'elements' => '',
+			'min' => '',
+			'max' => '',
+			'return_format' => 'id',
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'location',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'acf_after_title',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => 1,
+	'description' => '',
+));
+
+endif;
 //Custom Categories for Locations
 //hook into the init action and call create_locations_hierarchical_taxonomy when it fires
 add_action( 'init', 'create_locations_hierarchical_taxonomy', 0 );
