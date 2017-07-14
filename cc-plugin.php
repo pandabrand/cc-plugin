@@ -142,9 +142,8 @@ $cc_addon->run(
 function cc_addon_import_function($post_id, $data, $import_options, $article) {
   $city_id = $data['city_migrate_id'];
   write_log("starting import get city posts: " . $city_id);
-  $cc_addon->log( "starting import get city posts: " . $city_id );
   $city_posts = get_posts(array(
-    'numberposts' => 1,
+    'posts_per_page' => 1,
     'post_type' => 'city',
     'meta_query' => array(
         array(
@@ -153,9 +152,8 @@ function cc_addon_import_function($post_id, $data, $import_options, $article) {
         )
       )
   ));
-  $r = print_r($city_posts);
-  write_log("city_posts retrieved : " . $r);
-  $cc_addon->log( "city_posts retrieved : " . $r );
+
+  write_log("city_posts retrieved : " . $city_posts);
   if(!empty($city_posts)) {
     $city_to_add = $city_posts[0];
     write_log("city_posts not empty : " . $city_to_add->ID);
