@@ -35,6 +35,327 @@ function culture_collide_cpt() {
     'has_archive' => true
   ));
 
+  if( function_exists('acf_add_local_field_group') ):
+
+  acf_add_local_field_group(array (
+  	'key' => 'group_5967863fda8ec',
+  	'title' => 'City Field Group',
+  	'fields' => array (
+  		array (
+  			'key' => 'field_596786508782a',
+  			'label' => 'City Location',
+  			'name' => 'city_location',
+  			'type' => 'google_map',
+  			'instructions' => '',
+  			'required' => 1,
+  			'conditional_logic' => 0,
+  			'wrapper' => array (
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'center_lat' => '',
+  			'center_lng' => '',
+  			'zoom' => '',
+  			'height' => 200,
+  		),
+  		array (
+  			'key' => 'field_5967869a8782b',
+  			'label' => 'Photo Credit',
+  			'name' => 'photo_credit',
+  			'type' => 'text',
+  			'instructions' => '',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array (
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'default_value' => '',
+  			'placeholder' => 'Add photographer\'s name',
+  			'prepend' => '',
+  			'append' => '',
+  			'maxlength' => '',
+  		),
+  		array (
+  			'key' => 'field_596786c28782c',
+  			'label' => 'Featured',
+  			'name' => 'featured',
+  			'type' => 'true_false',
+  			'instructions' => 'Turn on for push to front page or menu features',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array (
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'message' => '',
+  			'default_value' => 0,
+  			'ui' => 1,
+  			'ui_on_text' => '',
+  			'ui_off_text' => '',
+  		),
+  		array (
+  			'key' => 'field_596787798782e',
+  			'label' => 'Hard Rock ID',
+  			'name' => 'hard_rock_id',
+  			'type' => 'text',
+  			'instructions' => 'Hard Rock Location ID for Hard Rock Hotels API',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array (
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'default_value' => '',
+  			'placeholder' => '',
+  			'prepend' => '',
+  			'append' => '',
+  			'maxlength' => '',
+  		),
+  		array (
+  			'key' => 'field_5967873a8782d',
+  			'label' => 'Hard Rock Image',
+  			'name' => 'hard_rock_image',
+  			'type' => 'image',
+  			'instructions' => 'Image for Hard Rock API',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array (
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'return_format' => 'array',
+  			'preview_size' => 'thumbnail',
+  			'library' => 'uploadedTo',
+  			'min_width' => '',
+  			'min_height' => '',
+  			'min_size' => '',
+  			'max_width' => '',
+  			'max_height' => '',
+  			'max_size' => '',
+  			'mime_types' => '',
+  		),
+  		array (
+  			'key' => 'field_5967b850d5cd5',
+  			'label' => 'Show Ad Space',
+  			'name' => 'show_ad_space',
+  			'type' => 'true_false',
+  			'instructions' => '',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array (
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'message' => '',
+  			'default_value' => 0,
+  			'ui' => 1,
+  			'ui_on_text' => '',
+  			'ui_off_text' => '',
+  		),
+  		array (
+  			'key' => 'field_5967b827d5cd3',
+  			'label' => 'Ad Space Image',
+  			'name' => 'ad_space_image',
+  			'type' => 'image',
+  			'instructions' => '',
+  			'required' => 0,
+  			'conditional_logic' => array (
+  				array (
+  					array (
+  						'field' => 'field_5967b850d5cd5',
+  						'operator' => '==',
+  						'value' => '1',
+  					),
+  				),
+  			),
+  			'wrapper' => array (
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'return_format' => 'array',
+  			'preview_size' => 'thumbnail',
+  			'library' => 'all',
+  			'min_width' => '',
+  			'min_height' => '',
+  			'min_size' => '',
+  			'max_width' => '',
+  			'max_height' => '',
+  			'max_size' => '',
+  			'mime_types' => '',
+  		),
+  		array (
+  			'key' => 'field_5967b844d5cd4',
+  			'label' => 'Ad Space Link',
+  			'name' => 'ad_space_link',
+  			'type' => 'url',
+  			'instructions' => '',
+  			'required' => 0,
+  			'conditional_logic' => array (
+  				array (
+  					array (
+  						'field' => 'field_5967b850d5cd5',
+  						'operator' => '==',
+  						'value' => '1',
+  					),
+  				),
+  			),
+  			'wrapper' => array (
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'default_value' => '',
+  			'placeholder' => '',
+  		),
+  		array (
+  			'key' => 'field_5967b868d5cd6',
+  			'label' => 'Print Preview',
+  			'name' => 'print_preview',
+  			'type' => 'image',
+  			'instructions' => '',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array (
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'return_format' => 'array',
+  			'preview_size' => 'thumbnail',
+  			'library' => 'all',
+  			'min_width' => '',
+  			'min_height' => '',
+  			'min_size' => '',
+  			'max_width' => '',
+  			'max_height' => '',
+  			'max_size' => '',
+  			'mime_types' => '',
+  		),
+  		array (
+  			'key' => 'field_5967b894d5cd9',
+  			'label' => 'Show Print Download',
+  			'name' => 'show_print_download',
+  			'type' => 'true_false',
+  			'instructions' => '',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array (
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'message' => '',
+  			'default_value' => 0,
+  			'ui' => 1,
+  			'ui_on_text' => '',
+  			'ui_off_text' => '',
+  		),
+  		array (
+  			'key' => 'field_5967b87bd5cd7',
+  			'label' => 'Print Download',
+  			'name' => 'print_download',
+  			'type' => 'url',
+  			'instructions' => '',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array (
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'default_value' => '',
+  			'placeholder' => '',
+  		),
+  		array (
+  			'key' => 'field_5967b8a3d5cda',
+  			'label' => 'Show Print Purchase',
+  			'name' => 'show_print_purchase',
+  			'type' => 'true_false',
+  			'instructions' => '',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array (
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'message' => '',
+  			'default_value' => 0,
+  			'ui' => 1,
+  			'ui_on_text' => '',
+  			'ui_off_text' => '',
+  		),
+  		array (
+  			'key' => 'field_5967b886d5cd8',
+  			'label' => 'Print Purchase',
+  			'name' => 'print_purchase',
+  			'type' => 'url',
+  			'instructions' => '',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array (
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'default_value' => '',
+  			'placeholder' => '',
+  		),
+  		array (
+  			'key' => 'field_596837767f979',
+  			'label' => 'Locations',
+  			'name' => 'locations',
+  			'type' => 'relationship',
+  			'instructions' => '',
+  			'required' => 0,
+  			'conditional_logic' => 0,
+  			'wrapper' => array (
+  				'width' => '',
+  				'class' => '',
+  				'id' => '',
+  			),
+  			'post_type' => array (
+  				0 => 'location',
+  			),
+  			'taxonomy' => array (
+  			),
+  			'filters' => array (
+  				0 => 'search',
+  			),
+  			'elements' => '',
+  			'min' => '',
+  			'max' => '',
+  			'return_format' => 'id',
+  		),
+  	),
+  	'location' => array (
+  		array (
+  			array (
+  				'param' => 'post_type',
+  				'operator' => '==',
+  				'value' => 'city',
+  			),
+  		),
+  	),
+  	'menu_order' => 0,
+  	'position' => 'normal',
+  	'style' => 'default',
+  	'label_placement' => 'top',
+  	'instruction_placement' => 'label',
+  	'hide_on_screen' => '',
+  	'active' => 1,
+  	'description' => '',
+  ));
+
+  endif;
   //Artist post type
   register_post_type( 'artist', array(
     'labels' => array(
@@ -264,16 +585,13 @@ function cc_addon_import_function($post_id, $data, $import_options, $article) {
     $city_to_add = $city_posts[0];
     write_log("city_posts not empty : " . $city_to_add->ID);
     $cc_addon->log( "- Adding city to location by ID: " . $city_to_add->ID );
-    $field_obj = get_field_object('location_city', $post_id);
-    write_log("field object: " . $field_obj["key"] . " : " . $field_obj["label"]);
     // update_field("location_city", $city_to_add->ID, $post_id);
-    update_post_meta( $post_id, $field_obj["key"],$city_to_add->ID );
+    update_post_meta( $post_id, 'field_5968371eb1dd1', $city_to_add->ID );
     //next level set the return relatioship
     write_log("Trying reverse assigment " );
     $cc_addon->log( "- Adding return reference of location to city by ID: " . $post_id );
     // update_field("locations", $post_id, $city_to_add->ID);
-    $city_obj = get_field_object('locations', $city_to_add->ID);
-    update_post_meta( $city_to_add->ID, $city_obj["key"], $post_id );
+    update_post_meta( $city_to_add->ID, 'field_596837767f979', $post_id );
   }
 }
 
