@@ -148,10 +148,10 @@ function cc_addon_import_function($post_id, $data, $import_options, $article) {
   ));
   if(!empty($city_posts)) {
     $city_to_add = $city_posts[0];
-    $cc_addon->log( '- Adding city to location by ID: ' . $city_to_add['ID'] );
-    update_field('location_city', $city_to_add['ID']);
+    $cc_addon->log( "- Adding city to location by ID: " . $city_to_add['ID'] );
+    update_field("location_city", $city_to_add['ID']);
     //next level set the return relatioship
-    $cc_addon->log( '- Adding return reference of location to city by ID: ' . $post_id );
-    update_field('locations', $post_id, $city_to_add['ID']);
+    $cc_addon->log( "- Adding return reference of location to city by ID: " . $post_id );
+    update_field("locations", $post_id, $city_to_add['ID']);
   }
 }
