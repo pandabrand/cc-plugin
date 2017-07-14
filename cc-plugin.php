@@ -147,7 +147,7 @@ function cc_addon_import_function($post_id, $data, $import_options, $article) {
     'meta_key' => 'migrate_id',
     'meta_value' => $data['city_migrate_id']
   ));
-  write_log("city_posts retrieved : " . count($city_posts));
+  write_log("city_posts retrieved : " . $city_posts[0]);
   if(!empty($city_posts)) {
     $city_to_add = $city_posts[0];
     write_log("city_posts not empty : " . $city_to_add['ID']);
