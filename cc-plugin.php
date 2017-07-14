@@ -83,7 +83,43 @@ function culture_collide_cpt() {
     'show_in_nav_menus' => true,
     'has_archive' => true
   ));
+}
 
+//Custom Categories for Locations
+//hook into the init action and call create_locations_hierarchical_taxonomy when it fires
+add_action( 'init', 'create_locations_hierarchical_taxonomy', 0 );
+
+//create a custom taxonomy name it Location Type for your Locations
+
+function create_locations_hierarchical_taxonomy() {
+
+// Add new taxonomy, make it hierarchical like categories
+//first do the translations part for GUI
+
+  $labels = array(
+    'name' => _x( 'Location Types', 'taxonomy general name' ),
+    'singular_name' => _x( 'Location Type', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Location Types' ),
+    'all_items' => __( 'All Location Types' ),
+    'parent_item' => __( 'Parent Location Type' ),
+    'parent_item_colon' => __( 'Parent Location Type:' ),
+    'edit_item' => __( 'Edit Location Type' ),
+    'update_item' => __( 'Update Location Type' ),
+    'add_new_item' => __( 'Add New Location Type' ),
+    'new_item_name' => __( 'New Location Type' ),
+    'menu_name' => __( 'Location Types' ),
+  );
+
+// Now register the taxonomy
+
+  register_taxonomy('location_types',array('location'), array(
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'location-type' ),
+  ));
 
 }
 
