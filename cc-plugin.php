@@ -799,8 +799,9 @@ function cc_addon_import_artist_function($post_id, $data, $import_options, $arti
     // write_log("Trying reverse assigment " );
     // update_field("field_596837767f979", get_post($post_id), $city_to_add->ID);
   }
+
   $location_str = $data['location_migrate_id'];
-  $location_arr = explode(",", $Location_str);
+  $location_arr = explode(",", $location_str);
   $location_posts = get_posts(array(
     posts_per_page => -1,
     post_type => 'location',
@@ -811,7 +812,9 @@ function cc_addon_import_artist_function($post_id, $data, $import_options, $arti
       )
     )
   ));
+
   write_log("add locations to this artist");
+
   foreach($location_posts as $location_post) {
     update_field("field_59678d95bb4de", $location_post, $post_id);
   }
