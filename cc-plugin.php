@@ -123,9 +123,9 @@ function create_locations_hierarchical_taxonomy() {
 
 }
 
-include 'rapid-addon.php';
-$cc_addon = new RapidAddon('CC Add-On', 'cc_addon');
-$cc_addon->add_field('city_migrate_id', 'City ID ', 'text');
+include "rapid-addon.php";
+$cc_addon = new RapidAddon('CC Add-On','cc_addon');
+$cc_addon->add_field('city_migrate_id', 'City ID', 'text');
 $cc_addon->set_import_function('cc_addon_import_function');
 $cc_addon->admin_notice(
   "This Add-On requires WP All Import and the Culture Collide theme.",
