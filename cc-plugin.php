@@ -813,11 +813,16 @@ function cc_addon_import_artist_function($post_id, $data, $import_options, $arti
     )
   ));
 
-  write_log("add locations to this artist");
+  write_log("add locations to this artist: " . count($location_posts));
+  $value = array();
 
-  foreach($location_posts as $location_post) {
-    update_field("field_59678d95bb4de", $location_post, $post_id);
+  foreach($location_posts as $location) {
+    $value[] = array("field_59678dd0bb4df" => $location, "field_59678e0ebb4e0" => "");
   }
+
+  // save a repeater field value
+  update_field( "field_59678d95bb4de", $value, $post_id );
+
 }
 
 
