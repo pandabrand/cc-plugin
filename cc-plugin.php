@@ -140,18 +140,32 @@ $cc_addon->run(
 );
 
 function cc_addon_import_function($post_id, $data, $import_options, $article) {
+  write_log("starting import get city posts");
   $city_posts = get_posts(array(
     'numberposts' => 1,
     'post_type' => 'city',
     'meta_key' => 'migrate_id',
     'meta_value' => $data['city_migrate_id']
   ));
+  write_log("city_posts retrieved : " . count($city_posts));
   if(!empty($city_posts)) {
     $city_to_add = $city_posts[0];
+    write_log("city_posts not empty : " $city_to_add['ID']);
     $cc_addon->log( "- Adding city to location by ID: " . $city_to_add['ID'] );
     update_field("location_city", $city_to_add['ID']);
     //next level set the return relatioship
     $cc_addon->log( "- Adding return reference of location to city by ID: " . $post_id );
     update_field("locations", $post_id, $city_to_add['ID']);
   }
+}
+
+
+if ( ! function_exists('write_log')) {
+   function write_log ( $log )  {
+      if ( is_array( $log ) || is_object( $log ) ) {
+         error_log( print_r( $log, true ) );
+      } else {
+         error_log( $log );
+      }
+   }
 }
