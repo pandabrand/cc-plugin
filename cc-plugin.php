@@ -140,23 +140,30 @@ $cc_addon->run(
 );
 
 function cc_addon_import_function($post_id, $data, $import_options, $article) {
-  write_log("starting import get city posts");
+  $city_id = $data['city_migrate_id'];
+  write_log("starting import get city posts: " . $city_id);
+  $cc_addon->log( "starting import get city posts: " . $city_id );
   $city_posts = get_posts(array(
     'numberposts' => 1,
     'post_type' => 'city',
-    'meta_key' => 'migrate_id',
-    'meta_value' => $data['city_migrate_id']
+    'meta_query' => array(
+        array(
+          'key' => 'migrate_id',
+          'value' => $city_id
+        )
+      )
   ));
   $r = print_r($city_posts);
   write_log("city_posts retrieved : " . $r);
+  $cc_addon->log( "city_posts retrieved : " . $r );
   if(!empty($city_posts)) {
     $city_to_add = $city_posts[0];
-    write_log("city_posts not empty : " . $city_to_add['ID']);
-    $cc_addon->log( "- Adding city to location by ID: " . $city_to_add['ID'] );
-    update_field("location_city", $city_to_add['ID']);
+    write_log("city_posts not empty : " . $city_to_add->ID);
+    $cc_addon->log( "- Adding city to location by ID: " . $city_to_add->ID );
+    update_field("location_city", $city_to_add->ID);
     //next level set the return relatioship
     $cc_addon->log( "- Adding return reference of location to city by ID: " . $post_id );
-    update_field("locations", $post_id, $city_to_add['ID']);
+    update_field("locations", $post_id, $city_to_add->ID);
   }
 }
 
