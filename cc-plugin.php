@@ -5,8 +5,9 @@ Description: Custom Post Types for Culture Collide website.
 Author: Frederick Wells
 Author URI: http://www.pandabrand.net
 */
-include_once "rapid-addon.php";
-include_once "post_fields.php";
+
+include_once( plugin_dir_path( __FILE__ ).'rapid-addon.php' );
+include_once( plugin_dir_path( __FILE__ ).'post_fields.php' );
 
 add_action( 'init', 'culture_collide_cpt' );
 
