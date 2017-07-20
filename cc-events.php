@@ -1,3 +1,115 @@
 <?php
 
-//THIS will be where events fields will be
+if( function_exists('acf_add_local_field_group') ):
+
+acf_add_local_field_group(array (
+	'key' => 'group_59703c2fb90e9',
+	'title' => 'Event Fields',
+	'fields' => array (
+		array (
+			'key' => 'field_59703c3b63052',
+			'label' => 'Event Date',
+			'name' => 'event_date',
+			'type' => 'date_picker',
+			'instructions' => '',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'display_format' => 'F j, Y',
+			'return_format' => 'F j, Y',
+			'first_day' => 0,
+		),
+		array (
+			'key' => 'field_59703c6963053',
+			'label' => 'Event Start Time',
+			'name' => 'event_start_time',
+			'type' => 'time_picker',
+			'instructions' => '',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'display_format' => 'g:i a',
+			'return_format' => 'g:i a',
+		),
+		array (
+			'key' => 'field_59703c9263054',
+			'label' => 'Event End Time',
+			'name' => 'event_end_time',
+			'type' => 'time_picker',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'display_format' => 'g:i a',
+			'return_format' => 'g:i a',
+		),
+		array (
+			'key' => 'field_59703cd863055',
+			'label' => 'Event Location Name',
+			'name' => 'event_location_name',
+			'type' => 'text',
+			'instructions' => '',
+			'required' => 1,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+		),
+		array (
+			'key' => 'field_59703cea63056',
+			'label' => 'Event Address',
+			'name' => 'event_address',
+			'type' => 'google_map',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'center_lat' => '',
+			'center_lng' => '',
+			'zoom' => '',
+			'height' => '',
+		),
+	),
+	'location' => array (
+		array (
+			array (
+				'param' => 'post_type',
+				'operator' => '==',
+				'value' => 'event',
+			),
+		),
+	),
+	'menu_order' => 0,
+	'position' => 'normal',
+	'style' => 'default',
+	'label_placement' => 'top',
+	'instruction_placement' => 'label',
+	'hide_on_screen' => '',
+	'active' => 1,
+	'description' => '',
+));
+
+endif;
