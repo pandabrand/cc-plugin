@@ -10,6 +10,7 @@ include_once( plugin_dir_path( __FILE__ ).'rapid-addon.php' );
 include_once( plugin_dir_path( __FILE__ ).'post_fields.php' );
 include_once( plugin_dir_path( __FILE__ ).'cc-events.php' );
 include_once( plugin_dir_path( __FILE__ ).'cc-home-feature.php' );
+include_once( plugin_dir_path( __FILE__ ).'cc-sponsorship.php' );
 
 add_action( 'init', 'culture_collide_cpt' );
 
@@ -783,7 +784,7 @@ $cc_addon->run(
 
 function cc_addon_import_function($post_id, $data, $import_options, $article) {
   $city_id = $data['city_migrate_id'];
-  write_log("starting import get city posts: " . $city_id);
+  // write_log("starting import get city posts: " . $city_id);
   $city_posts = get_posts(array(
     'posts_per_page' => 1,
     'post_type' => 'city',
@@ -795,13 +796,13 @@ function cc_addon_import_function($post_id, $data, $import_options, $article) {
       )
   ));
 
-  write_log("city_posts retrieved : " . $city_posts);
+  // write_log("city_posts retrieved : " . $city_posts);
   if(!empty($city_posts)) {
     $city_to_add = $city_posts[0];
-    write_log("city_posts not empty : " . $city_to_add->ID);
+    // write_log("city_posts not empty : " . $city_to_add->ID);
     update_field("field_5968371eb1dd1", $city_to_add, $post_id);
     //next level set the return relatioship
-    write_log("Trying reverse assigment " );
+    // write_log("Trying reverse assigment " );
     update_field("field_596837767f979", $article, $city_to_add->ID);
   }
 }
