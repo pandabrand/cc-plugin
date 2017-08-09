@@ -11,7 +11,7 @@ acf_add_local_field_group(array (
 			'name' => 'sponsor_title',
 			'type' => 'text',
 			'instructions' => 'Title is fall back for Sponsorship, if there isn\'t a image or the image can\'t be found we will display the Sponsor Title(Name).',
-			'required' => 1,
+			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array (
 				'width' => '',
