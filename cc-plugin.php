@@ -11,6 +11,7 @@ include_once( plugin_dir_path( __FILE__ ).'post_fields.php' );
 include_once( plugin_dir_path( __FILE__ ).'cc-events.php' );
 include_once( plugin_dir_path( __FILE__ ).'cc-home-feature.php' );
 include_once( plugin_dir_path( __FILE__ ).'cc-sponsorship.php' );
+include_once( plugin_dir_path( __FILE__ ).'cc-rewrites.php' );
 
 add_action( 'init', 'culture_collide_cpt' );
 
