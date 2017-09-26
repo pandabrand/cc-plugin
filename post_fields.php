@@ -347,7 +347,7 @@ acf_add_local_field_group(array (
 			),
 		),
 	),
-	'menu_order' => 7,
+	'menu_order' => 0,
 	'position' => 'side',
 	'style' => 'default',
 	'label_placement' => 'top',
