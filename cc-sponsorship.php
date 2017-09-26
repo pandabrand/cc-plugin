@@ -48,6 +48,22 @@ acf_add_local_field_group(array (
 			'max_size' => '',
 			'mime_types' => 'jpg, png, gif, jpeg',
 		),
+		array (
+			'key' => 'field_5979e6f6b9602cczzz',
+			'label' => 'Sponsor URL',
+			'name' => 'sponsor_url',
+			'type' => 'url',
+			'instructions' => 'Sponsor URL',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => 'https://www.sponsor.net',
+		),
 	),
 	'location' => array (
 		array (
