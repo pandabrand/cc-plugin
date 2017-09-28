@@ -1,5 +1,5 @@
 <?php
-add_action('plugins_loaded','cc_add_categories_to_cpt');
+add_action('init','cc_add_categories_to_cpt');
 function cc_add_categories_to_cpt(){
   register_taxonomy_for_object_type( 'category', 'artist' );
   register_taxonomy_for_object_type( 'post_tag', 'artist' );
