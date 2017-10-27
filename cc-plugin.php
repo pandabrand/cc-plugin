@@ -804,16 +804,6 @@ function cc_addon_import_function($post_id, $data, $import_options, $article) {
 }
 
 
-if ( ! function_exists('write_log')) {
-   function write_log ( $log )  {
-      if ( is_array( $log ) || is_object( $log ) ) {
-         error_log( print_r( $log, true ) );
-      } else {
-         error_log( $log );
-      }
-   }
-}
-
 $cc_artist_addon = new RapidAddon("CC Artist Add-On","cc_artist_addon");
 $cc_artist_addon->add_field("city_migrate_id", "City ID", "text");
 $cc_artist_addon->add_field("location_migrate_id", "Location IDs", "text");
