@@ -16,16 +16,17 @@ function get_cities() {
 
 function get_location_categories() {
   $args = array(
-    'name' => 'location_types'
+    'taxonomy' => 'location_types',
+    'hide_empty' => true
   );
 
-  $output = 'names';
+  $categories_terms = get_terms( $args );
 
-  $categories = get_taxonomies( $args, $output );
-
-  if ( empty( $categories ) ) {
+  if ( empty( $categories_terms ) ) {
     return null;
   }
+
+  $categories = wp_list_pluck( $categories_terms, 'name' );
 
   return $categories;
 }
