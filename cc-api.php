@@ -87,9 +87,25 @@ function get_locations_by_hotel_id( $data ) {
        )
      )
   ) );
-  write_log($locations);
 
-  return $locations;
+  $hrh_locations = array();
+  $image_sizes = get_intermediate_image_sizes();
+  
+  foreach( $locations as $location ) {
+    $photo = get_the_post_thumbnail_url( $location->ID, 'full' );
+    $available_sizes = wp_get_attachment_image_src( $location->ID, $image_sizes );
+    $term = get_the_terms( $location->ID, 'post_tag' );
+    $tags = wp_list_pluck( $post_tags, 'name' );
+    $hrh_locations[] = array(
+      '_id'             => $location->ID,
+      'name'            => $location->post_title,
+      'description'     => $location->post_content,
+      'photo'           => $photo,
+      'available_sizes' => $available_sizes
+    );
+  }
+
+  return $hrh_locations;
 }
 
 add_action( 'rest_api_init', function () {
