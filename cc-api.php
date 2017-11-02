@@ -12,7 +12,7 @@ function get_cities() {
   return $cities;
 }
 
-add_action( 'cc-rest_api_init', function () {
+add_action( 'rest_api_init', function () {
   register_rest_route( 'cc-api/v1', '/cities/', array(
     'methods' => 'GET',
     'callback' => 'get_cities',
