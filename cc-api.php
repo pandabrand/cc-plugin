@@ -82,7 +82,7 @@ function get_locations_by_hotel_id( $data ) {
     'meta_query' => array(
        array(
            'key' => 'location_city',
-           'value' => '"'$city->ID'"',
+           'value' => '"' . $city->ID . '"',
            'compare' => 'LIKE'
        )
      )
