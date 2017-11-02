@@ -33,7 +33,8 @@ function culture_collide_cpt() {
     'menu_position' => 2,
     'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
     'show_in_nav_menus' => true,
-    'has_archive' => true
+    'has_archive' => true,
+    'show_in_rest'       => true
   ));
 
   //Artist post type
@@ -58,7 +59,8 @@ function culture_collide_cpt() {
     'menu_position' => 2,
     'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
     'show_in_nav_menus' => true,
-    'has_archive' => true
+    'has_archive' => true,
+    'show_in_rest'       => true
   ));
 
   //Location post type
@@ -83,7 +85,8 @@ function culture_collide_cpt() {
     'menu_position' => 2,
     'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
     'show_in_nav_menus' => true,
-    'has_archive' => true
+    'has_archive' => true,
+    'show_in_rest'       => true
   ));
 
   //Ad post type
@@ -133,7 +136,8 @@ function culture_collide_cpt() {
     'menu_position' => 2,
     'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
     'show_in_nav_menus' => true,
-    'has_archive' => true
+    'has_archive' => true,
+    'show_in_rest'       => true
   ));
 
 }
