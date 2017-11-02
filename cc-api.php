@@ -44,6 +44,7 @@ function get_hrh_cities() {
   );
 
   $hotel_cities = get_posts( $args );
+  write_log($hotel_cities);
 
   if( empty( $hotel_cities ) ) {
     return null;
