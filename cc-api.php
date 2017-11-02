@@ -51,9 +51,11 @@ function get_hrh_cities() {
 }
 
 function get_locations_by_hotel_id( $data ) {
+  write_log($data);
   //find hotel id, if none return null
   $hotel_id = $data['hotelId'];
 
+  write_log($hotel_id);
   if( empty( $hotel_id ) ) {
     return null;
   }
@@ -69,9 +71,11 @@ function get_locations_by_hotel_id( $data ) {
        )
      )
   ) );
+  write_log($cities);
 
   //assumign first city is the city we need because there should be multiple
   $city = $cities[0];
+  write_log($city);
 
   if( empty( $city ) ) {
     return null;
@@ -87,6 +91,7 @@ function get_locations_by_hotel_id( $data ) {
        )
      )
   ) );
+  write_log($locations);
 
   return $locations;
 }
