@@ -52,14 +52,14 @@ function get_hrh_cities() {
 
 function get_locations_by_hotel_id( $data ) {
   //find hotel id, if none return null
-  $hotel_id = $data['hotelId']
+  $hotel_id = $data['hotelId'];
 
   if( empty( $hotel_id ) ) {
     return null;
   }
 
   //find city by hotel ID
-  $cities = get_posts(array(
+  $cities = get_posts( array(
     'post_type' => ['city'],
     'meta_query' => array(
        array(
@@ -73,11 +73,11 @@ function get_locations_by_hotel_id( $data ) {
   //assumign first city is the city we need because there should be multiple
   $city = $cities[0];
 
-  if(  empty( $city ) ) {
+  if( empty( $city ) ) {
     return null;
   }
 
-  $locations = get_posts(array(
+  $locations = get_posts( array(
     'post_type' => ['location'],
     'meta_query' => array(
        array(
