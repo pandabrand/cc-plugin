@@ -51,9 +51,9 @@ function get_hrh_cities() {
 
   $hotel_cities = array();
 
-  foreach($hotel_cities as $city) {
+  foreach($cities as $city) {
     $hardrock_id = get_field('hard_rock_id', $city->ID);
-    
+
     $hotel_cities[] = array(
       '_id' => $city->ID,
       'displayName' => $city->post_title,
