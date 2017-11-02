@@ -43,11 +43,23 @@ function get_hrh_cities() {
      )
   );
 
-  $hotel_cities = get_posts( $args );
-  write_log($hotel_cities);
+  $cities = get_posts( $args );
 
-  if( empty( $hotel_cities ) ) {
+  if( empty( $cities ) ) {
     return null;
+  }
+
+  $hotel_cities = array();
+
+  foreach($hotel_cities as $city) {
+    $hardrock_id = get_field('hard_rock_id', $city->ID);
+    
+    $hotel_cities[] = array(
+      '_id' => $city->ID,
+      'displayName' => $city->post_title,
+      'name' => $city->post_name,
+      'hardRockId' => $hardrock_id
+    );
   }
 
   return $hotel_cities;
