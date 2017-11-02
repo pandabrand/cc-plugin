@@ -1,9 +1,9 @@
 <?php
 
 function get_cities() {
-  $cities = get_posts(
-    'post_type' => 'cities',
-  );
+  $cities = get_posts(array(
+    'post_type' => ['cities']
+  ));
 
   if( empty( $cities ) ) {
     return null;
