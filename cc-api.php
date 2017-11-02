@@ -16,7 +16,7 @@ function get_cities() {
 
 function get_location_categories() {
   $args = array(
-    'name' => 'location-types'
+    'name' => 'location_types'
   );
 
   $output = 'names';
