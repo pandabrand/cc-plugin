@@ -1,19 +1,4 @@
 <?php
-
-function get_cities() {
-  $args = array(
-    'post_type' => ['city']
-  );
-
-  $cities = get_posts($args);
-
-  if( empty( $cities ) ) {
-    return null;
-  }
-
-  return $cities;
-}
-
 function get_location_categories() {
   $args = array(
     'taxonomy' => 'location_types',
@@ -65,12 +50,48 @@ function get_hrh_cities() {
   return $hotel_cities;
 }
 
-add_action( 'rest_api_init', function () {
-  register_rest_route( 'cc-api/v1', '/cities/', array(
-    'methods' => 'GET',
-    'callback' => 'get_cities',
+function get_locations_by_hotel_id( $data ) {
+  //find hotel id, if none return null
+  $hotel_id = $data['hotelId']
+
+  if( empty( $hotel_id ) ) {
+    return null;
+  }
+
+  //find city by hotel ID
+  $cities = get_posts(array(
+    'post_type' => ['city'],
+    'meta_query' => array(
+       array(
+           'key' => 'hard_rock_id',
+           'value' => $hotel_id,
+           'compare' => '='
+       )
+     )
   ) );
 
+  //assumign first city is the city we need because there should be multiple
+  $city = $cities[0];
+
+  if(  empty( $city ) ) {
+    return null;
+  }
+
+  $locations = get_posts(array(
+    'post_type' => ['location'],
+    'meta_query' => array(
+       array(
+           'key' => 'location_city',
+           'value' => $city->ID,
+           'compare' => '='
+       )
+     )
+  ) );
+
+  return $locations;
+}
+
+add_action( 'rest_api_init', function () {
   register_rest_route( 'cc-api/v1', '/categories/', array(
     'methods' => 'GET',
     'callback' => 'get_location_categories',
@@ -79,6 +100,11 @@ add_action( 'rest_api_init', function () {
   register_rest_route( 'cc-api/v1', '/hotels/', array(
     'methods' => 'GET',
     'callback' => 'get_hrh_cities',
+  ) );
+
+  register_rest_route( 'cc-api/v1', '/locations/(?P<hotelId>\d+)', array(
+    'methods' => 'GET',
+    'callback' => 'get_locations_by_hotel_id',
   ) );
 
 } );
