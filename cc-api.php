@@ -36,7 +36,7 @@ function get_hrh_cities() {
     'post_type' => ['city'],
     'meta_query' => array(
          array(
-             'key' => 'field_596787798782e',
+             'key' => 'hard_rock_id',
              'value' => '',
              'compare' => '!='
          )
