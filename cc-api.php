@@ -57,7 +57,7 @@ function get_locations_by_hotel_id($data) {
   //get params if params not set use default for variable
   $limit = isset( $data['limit'] ) ? $data['limit'] : 10;
   $page = isset( $data['offset'] ) ? $data['offset'] : 0;
-  $tags = isset( $data['tags'] ) ? explode( ",", $data['tags'] ) : array();
+  $location_types = isset( $data['location_types'] ) ? explode( ",", $data['location_types'] ) : array();
 
   if( empty( $hotel_id ) ) {
     return null;
@@ -99,7 +99,7 @@ function get_locations_by_hotel_id($data) {
       array (
         'taxonomy' => 'location_types',
         'field' => 'slug',
-        'terms' => $tags
+        'terms' => $location_types
       )
     );
   }
