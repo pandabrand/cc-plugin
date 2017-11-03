@@ -128,7 +128,7 @@ add_action( 'rest_api_init', function () {
 
   register_rest_route( 'cc-api/v1', '/locations/(?P<hotelId>\d+)', array(
     'methods' => 'GET',
-    'callback' => 'get_locations_by_hotel_id',
+    'callback' => array($this, 'get_locations_by_hotel_id'),
   ) );
 
 } );
