@@ -50,7 +50,7 @@ function get_hrh_cities() {
   return $hotel_cities;
 }
 
-function get_locations_by_hotel_id( $data, WP_REST_Request $request ) {
+function get_locations_by_hotel_id(WP_REST_Request $request ,$data) {
   write_log($request);
   //find hotel id, if none return null
   $hotel_id = $data['hotelId'];
@@ -128,7 +128,7 @@ add_action( 'rest_api_init', function () {
 
   register_rest_route( 'cc-api/v1', '/locations/(?P<hotelId>\d+)', array(
     'methods' => 'GET',
-    'callback' => array($this, 'get_locations_by_hotel_id'),
+    'callback' => 'get_locations_by_hotel_id',
   ) );
 
 } );
