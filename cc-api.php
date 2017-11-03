@@ -51,11 +51,13 @@ function get_hrh_cities() {
 }
 
 function get_locations_by_hotel_id($data) {
-  write_log($data);
   //find hotel id, if none return null
   $hotel_id = $data['hotelId'];
-  $limit = isset($data['limit']) ? $data['limit'] : 25;
-  write_log($limit);
+
+  //get params if params not set use default for variable
+  $limit = isset( $data['limit'] ) ? $data['limit'] : 10;
+  $page = isset( $data['offset'] ) ? $data['offset'] : 0;
+  $tags = isset( $data['tags'] ) ? explode( ",", $data['tags'] ) : array();
 
   if( empty( $hotel_id ) ) {
     return null;
@@ -80,7 +82,8 @@ function get_locations_by_hotel_id($data) {
     return null;
   }
 
-  $locations = get_posts( array(
+  $locations_args = array(
+    'posts_per_page' => $limit,
     'post_type' => ['location'],
     'meta_query' => array(
        array(
@@ -89,7 +92,20 @@ function get_locations_by_hotel_id($data) {
            'compare' => 'LIKE'
        )
      )
-  ) );
+  );
+
+  if( !empty( $tags ) ) {
+    $locations_args['tax_query'] = array(
+      array (
+        'taxonomy' => 'location_types',
+        'field' => 'slug',
+        'terms' => $tags
+      )
+    );
+  }
+
+
+  $locations = get_posts( $locations_args );
 
   $hrh_locations = array();
   $image_sizes = get_intermediate_image_sizes();
