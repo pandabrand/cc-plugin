@@ -50,7 +50,8 @@ function get_hrh_cities() {
   return $hotel_cities;
 }
 
-function get_locations_by_hotel_id( $data ) {
+function get_locations_by_hotel_id( $data, WP_REST_Request $request ) {
+  write_log($request);
   //find hotel id, if none return null
   $hotel_id = $data['hotelId'];
 
