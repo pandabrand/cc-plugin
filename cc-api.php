@@ -54,7 +54,7 @@ function get_locations_by_hotel_id($data) {
   write_log($data);
   //find hotel id, if none return null
   $hotel_id = $data['hotelId'];
-  $limit = array_key_exists('limit', $data) ? $data['limit'] : 25;
+  $limit = isset($data['limit']) ? $data['limit'] : 25;
   write_log($limit);
 
   if( empty( $hotel_id ) ) {
