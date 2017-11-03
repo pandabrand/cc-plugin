@@ -56,7 +56,7 @@ function get_locations_by_hotel_id($data) {
 
   //get params if params not set use default for variable
   $limit = isset( $data['limit'] ) ? $data['limit'] : 10;
-  $page = isset( $data['offset'] ) ? $data['offset'] : 0;
+  $offset = isset( $data['offset'] ) ? $data['offset'] : 0;
   $location_types = isset( $data['location_types'] ) ? explode( ",", $data['location_types'] ) : array();
 
   if( empty( $hotel_id ) ) {
@@ -84,6 +84,7 @@ function get_locations_by_hotel_id($data) {
 
   $locations_args = array(
     'posts_per_page' => $limit,
+    'offset' => $offset,
     'post_type' => ['location'],
     'meta_query' => array(
        array(
