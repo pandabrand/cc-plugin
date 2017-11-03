@@ -59,6 +59,8 @@ function get_locations_by_hotel_id($data) {
   $offset = isset( $data['offset'] ) ? $data['offset'] : 0;
   $location_types = isset( $data['location_types'] ) ? explode( ",", $data['location_types'] ) : array();
 
+  write_log($location_types);
+  
   if( empty( $hotel_id ) ) {
     return null;
   }
