@@ -1,5 +1,13 @@
 <?php
-function get_location_categories() {
+/**
+  * @api {get} /location-types/ Request List of current used location types
+  * @apiName GetLocationTypes
+  * @apiGroup Categories
+  *
+  *
+  * @apiSuccess {String[]} An Array of location types
+*/
+function get_location_location_types() {
   $args = array(
     'taxonomy' => 'location_types',
     'hide_empty' => true
@@ -125,7 +133,7 @@ function get_locations_by_hotel_id($data) {
       'description'     => $location->post_content,
       'photo'           => $photo,
       'available_sizes' => $available_sizes,
-      'type'            => $location_tags,
+      'location_types'  => $location_tags,
       'website'         => $website,
       'address'         => $address
     );
@@ -135,9 +143,9 @@ function get_locations_by_hotel_id($data) {
 }
 
 add_action( 'rest_api_init', function () {
-  register_rest_route( 'cc-api/v1', '/categories/', array(
+  register_rest_route( 'cc-api/v1', '/location-types/', array(
     'methods' => 'GET',
-    'callback' => 'get_location_categories',
+    'callback' => 'get_location_location_types',
   ) );
 
   register_rest_route( 'cc-api/v1', '/hotels/', array(
