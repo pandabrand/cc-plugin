@@ -72,7 +72,7 @@ function get_hrh_cities() {
 }
 
 /**
-  * @api {get} /locations/:hotel_id?limit=:limit&offset=:offset&location_types=:location_types Request List of locations associated from the city with this HR Hotel ID
+  * @api {get} /locations/:hotel_id Request List of locations associated from the city with this HR Hotel ID
   * @apiVersion 1.0.0
   * @apiName GetLocationsByHRHId
   * @apiGroup Locations
@@ -80,14 +80,23 @@ function get_hrh_cities() {
   * @apiParam {String} hotel_id city Hotel unique ID
   * @apiParam {Number} [limit] Optional Number of locations to return defaults to 10, set to '-1' for all
   * @apiParam {Number} [offset] Optional Number to offset the return, default is 0
-  * @apiParam {String[]} [location_types] Optional comma delimited list of location-types to filter by
+  * @apiParam {String} [location_types] Optional comma delimited list of location-types to filter by
   *
   * @apiSuccess {Object[]}  city An Array of City objects
-  * @apiSuccess {Number}    city._id City id
-  * @apiSuccess {String}    city.displayName Display Name of City
-  * @apiSuccess {String}    city.hardrockId Hard Rock Hotel ID
+  * @apiSuccess {String}    city._id City id
+  * @apiSuccess {String}    city.name Name of Location
+  * @apiSuccess {String}    city.description Description of Location
+  * @apiSuccess {URL}       city.photo Url of the main photo
+  * @apiSuccess {URL[]}     city.available_sizes Array of main photo in other sizes
+  * @apiSuccess {String[]}  city.location_types Array of all Location Types tagged to this location
+  * @apiSuccess {URL}       city.website Website of location
+  * @apiSuccess {Object}    city.geo_location Object containing address and Lat/Lng info
+  * @apiSuccess {String}    city.geo_location.address Address of location
+  * @apiSuccess {String}    city.geo_location.lat Latitude of location
+  * @apiSuccess {String}    city.geo_location.lng longitude of location
 */
 function get_locations_by_hotel_id($data) {
+  //&offset=:offset&location_types=:location_types
   //find hotel id, if none return null
   $hotel_id = $data['hotelId'];
 
@@ -164,7 +173,7 @@ function get_locations_by_hotel_id($data) {
       'available_sizes' => $available_sizes,
       'location_types'  => $location_tags,
       'website'         => $website,
-      'address'         => $address
+      'geo_location'    => $address
     );
   }
 
