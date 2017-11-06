@@ -159,7 +159,7 @@ function get_locations_by_hotel_id($data) {
 
   foreach( $locations as $location ) {
     $photo = get_the_post_thumbnail_url( $location->ID, 'full' );
-    $available_sizes = wp_get_attachment_image_src( get_the_post_thumbnail_id( $location->ID ), $image_sizes );
+    $available_sizes = wp_get_attachment_image_src( get_post_thumbnail_id( $location->ID ), $image_sizes );
     $location_terms = get_the_terms( $location->ID, 'location_types' );
     $location_tags = wp_list_pluck( $location_terms, 'name' );
     $website = get_field('website', $location->ID);
