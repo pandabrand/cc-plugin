@@ -1,0 +1,8 @@
+{
+  "name": "Culture Collide API",
+  "version": "1.0.0",
+  "description": "API for access to culturecollide.com",
+  "title": "Culture Collide API Doc",
+  "sampleUrl" : "https://culturecollide.dev/wp-json/cc-api/v1",
+  "url" : "https://culturecollide.dev/wp-json/cc-api/v1"
+}

@@ -1,6 +1,7 @@
 <?php
 /**
   * @api {get} /location-types/ Request List of current used location types
+  * @apiVersion 1.0.0
   * @apiName GetLocationTypes
   * @apiGroup Categories
   *
@@ -24,6 +25,18 @@ function get_location_location_types() {
   return $categories;
 }
 
+/**
+  * @api {get} /hotels/ Request List of current cities with a HR Hotel ID
+  * @apiVersion 1.0.0
+  * @apiName GetHRHCities
+  * @apiGroup Hotels
+  *
+  *
+  * @apiSuccess {Object[]}  city An Array of City objects
+  * @apiSuccess {Number}    city._id City id
+  * @apiSuccess {String}    city.displayName Display Name of City
+  * @apiSuccess {String}    city.hardrockId Hard Rock Hotel ID
+*/
 function get_hrh_cities() {
   $args = array(
     'post_type' => ['city'],
@@ -58,6 +71,22 @@ function get_hrh_cities() {
   return $hotel_cities;
 }
 
+/**
+  * @api {get} /locations/:hotel_id?limit=:limit&offset=:offset&location_types=:location_types Request List of locations associated from the city with this HR Hotel ID
+  * @apiVersion 1.0.0
+  * @apiName GetLocationsByHRHId
+  * @apiGroup Locations
+  *
+  * @apiParam {String} hotel_id city Hotel unique ID
+  * @apiParam {Number} [limit] Optional Number of locations to return defaults to 10, set to '-1' for all
+  * @apiParam {Number} [offset] Optional Number to offset the return, default is 0
+  * @apiParam {String[]} [location_types] Optional comma delimited list of location-types to filter by
+  *
+  * @apiSuccess {Object[]}  city An Array of City objects
+  * @apiSuccess {Number}    city._id City id
+  * @apiSuccess {String}    city.displayName Display Name of City
+  * @apiSuccess {String}    city.hardrockId Hard Rock Hotel ID
+*/
 function get_locations_by_hotel_id($data) {
   //find hotel id, if none return null
   $hotel_id = $data['hotelId'];
@@ -83,7 +112,7 @@ function get_locations_by_hotel_id($data) {
      )
   ) );
 
-  //assumign first city is the city we need because there should be multiple
+  //assuming first city is the city we need because there should not be multiple cities with the same hotel id
   $city = $cities[0];
 
   if( empty( $city ) ) {
