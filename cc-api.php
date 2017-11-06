@@ -156,7 +156,7 @@ function get_locations_by_hotel_id($data) {
 
   $hrh_locations = array();
   $image_sizes = get_intermediate_image_sizes();
-
+  write_log($image_sizes);
   foreach( $locations as $location ) {
     $photo = get_the_post_thumbnail_url( $location->ID, 'full' );
     $available_sizes = wp_get_attachment_image_src( get_post_thumbnail_id( $location->ID ), $image_sizes );
