@@ -82,18 +82,18 @@ function get_hrh_cities() {
   * @apiParam {Number} [offset] Optional Number to offset the return, default is 0
   * @apiParam {String} [location_types] Optional comma delimited list of location-types to filter by
   *
-  * @apiSuccess {Object[]}  city An Array of City objects
-  * @apiSuccess {String}    city._id City id
-  * @apiSuccess {String}    city.name Name of Location
-  * @apiSuccess {String}    city.description Description of Location
-  * @apiSuccess {URL}       city.photo Url of the main photo
-  * @apiSuccess {URL[]}     city.available_sizes Array of main photo in other sizes
-  * @apiSuccess {String[]}  city.location_types Array of all Location Types tagged to this location
-  * @apiSuccess {URL}       city.website Website of location
-  * @apiSuccess {Object}    city.geo_location Object containing address and Lat/Lng info
-  * @apiSuccess {String}    city.geo_location.address Address of location
-  * @apiSuccess {String}    city.geo_location.lat Latitude of location
-  * @apiSuccess {String}    city.geo_location.lng longitude of location
+  * @apiSuccess {Object[]}  location An Array of Location objects
+  * @apiSuccess {String}    location._id Location id
+  * @apiSuccess {String}    location.name Name of Location
+  * @apiSuccess {String}    location.description Description of Location
+  * @apiSuccess {URL}       location.photo Url of the main photo
+  * @apiSuccess {URL[]}     location.available_sizes Array of main photo in other sizes
+  * @apiSuccess {String[]}  location.location_types Array of all Location Types tagged to this location
+  * @apiSuccess {URL}       location.website Website of location
+  * @apiSuccess {Object}    location.geo_location Object containing address and Lat/Lng info
+  * @apiSuccess {String}    location.geo_location.address Address of location
+  * @apiSuccess {String}    location.geo_location.lat Latitude of location
+  * @apiSuccess {String}    location.geo_location.lng longitude of location
 */
 function get_locations_by_hotel_id($data) {
   //&offset=:offset&location_types=:location_types
