@@ -19,10 +19,9 @@ if( function_exists('acf_add_local_field_group') ):
 					'id' => '',
 				),
 				'post_type' => array(
-					0 => 'city',
+					0 => 'post',
 					1 => 'artist',
 					2 => 'event',
-					3 => 'post',
 				),
 				'taxonomy' => array(
 				),
