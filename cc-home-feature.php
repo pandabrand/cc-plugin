@@ -1,4 +1,4 @@
-<?php 
+<?php
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array (
@@ -7,7 +7,7 @@ acf_add_local_field_group(array (
 	'fields' => array (
 		array (
 			'key' => 'field_597101a33a8ba',
-			'label' => 'Main Feature',
+			'label' => 'Culture Feature',
 			'name' => 'main_feature',
 			'type' => 'post_object',
 			'instructions' => '',
@@ -32,10 +32,10 @@ acf_add_local_field_group(array (
 			'ui' => 1,
 		),
 		array (
-			'key' => 'field_597101e63a8bb',
-			'label' => 'Secondary Main Feature',
-			'name' => 'secondary_main_feature',
-			'type' => 'repeater',
+			'key' => 'field_597101a33a8baculture',
+			'label' => 'Travel Feature',
+			'name' => 'travel_feature',
+			'type' => 'post_object',
 			'instructions' => '',
 			'required' => 1,
 			'conditional_logic' => 0,
@@ -44,39 +44,19 @@ acf_add_local_field_group(array (
 				'class' => '',
 				'id' => '',
 			),
-			'collapsed' => '',
-			'min' => 0,
-			'max' => 3,
-			'layout' => 'row',
-			'button_label' => 'Add Feature',
-			'sub_fields' => array (
-				array (
-					'key' => 'field_5971024e3a8bc',
-					'label' => 'Feature Object',
-					'name' => 'feature_object',
-					'type' => 'post_object',
-					'instructions' => '',
-					'required' => 1,
-					'conditional_logic' => 0,
-					'wrapper' => array (
-						'width' => '',
-						'class' => '',
-						'id' => '',
-					),
-					'post_type' => array (
-						0 => 'post',
-						1 => 'city',
-						2 => 'artist',
-						3 => 'event',
-					),
-					'taxonomy' => array (
-					),
-					'allow_null' => 0,
-					'multiple' => 0,
-					'return_format' => 'object',
-					'ui' => 1,
-				),
+			'post_type' => array (
+				0 => 'post',
+				1 => 'city',
+				2 => 'artist',
+				3 => 'event',
 			),
+			'taxonomy' => array (
+				0 => 'category:travel',
+			),
+			'allow_null' => 0,
+			'multiple' => 0,
+			'return_format' => 'object',
+			'ui' => 1,
 		),
 	),
 	'location' => array (
