@@ -1,81 +1,151 @@
 <?php
 if( function_exists('acf_add_local_field_group') ):
 
-acf_add_local_field_group(array (
-	'key' => 'group_5971019886bce',
-	'title' => 'Home Feature Pages',
-	'fields' => array (
-		array (
-			'key' => 'field_597101a33a8ba',
-			'label' => 'Culture Feature',
-			'name' => 'main_feature',
-			'type' => 'post_object',
-			'instructions' => '',
-			'required' => 1,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
+	acf_add_local_field_group(array(
+		'key' => 'group_5c27fdacda448',
+		'title' => 'Front Page Feature Posts',
+		'fields' => array(
+			array(
+				'key' => 'field_5c27fddb1d8f8',
+				'label' => 'Culture Feature Post',
+				'name' => 'culture_post',
+				'type' => 'post_object',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
+					0 => 'city',
+					1 => 'artist',
+					2 => 'event',
+					3 => 'post',
+				),
+				'taxonomy' => array(
+				),
+				'allow_null' => 0,
+				'multiple' => 0,
+				'return_format' => 'object',
+				'ui' => 1,
 			),
-			'post_type' => array (
-				0 => 'post',
-				1 => 'city',
-				2 => 'artist',
-				3 => 'event',
+			array(
+				'key' => 'field_5c27fe2a1d8f9',
+				'label' => 'Culture Feature Post Start',
+				'name' => 'culture_feature_post_start',
+				'type' => 'date_time_picker',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'display_format' => 'F j, Y g:i a',
+				'return_format' => 'Y-m-d H:i:s',
+				'first_day' => 0,
 			),
-			'taxonomy' => array (
+			array(
+				'key' => 'field_5c27fedd1d8fa',
+				'label' => 'Culture Feature Post End',
+				'name' => 'culture_feature_post_end',
+				'type' => 'date_time_picker',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'display_format' => 'F j, Y g:i a',
+				'return_format' => 'Y-m-d H:i:s',
+				'first_day' => 0,
 			),
-			'allow_null' => 0,
-			'multiple' => 0,
-			'return_format' => 'object',
-			'ui' => 1,
+			array(
+				'key' => 'field_5c27ff1b1d8fb',
+				'label' => 'Travel Feature Post',
+				'name' => 'travel_post',
+				'type' => 'post_object',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'post_type' => array(
+					0 => 'city',
+					1 => 'location',
+					2 => 'artist',
+					3 => 'post',
+				),
+				'taxonomy' => array(
+					0 => 'category:travel',
+				),
+				'allow_null' => 0,
+				'multiple' => 0,
+				'return_format' => 'object',
+				'ui' => 1,
+			),
+			array(
+				'key' => 'field_5c27ffa01d8fc',
+				'label' => 'Travel Feature Post Start',
+				'name' => 'travel_feature_post_start',
+				'type' => 'date_time_picker',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'display_format' => 'F j, Y g:i a',
+				'return_format' => 'Y-m-d H:i:s',
+				'first_day' => 0,
+			),
+			array(
+				'key' => 'field_5c27ffba1d8fd',
+				'label' => 'Travel Feature Post End',
+				'name' => 'travel_feature_post_end',
+				'type' => 'date_time_picker',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'display_format' => 'F j, Y g:i a',
+				'return_format' => 'Y-m-d H:i:s',
+				'first_day' => 0,
+			),
 		),
-		array (
-			'key' => 'field_597101a33a8baculture',
-			'label' => 'Travel Feature',
-			'name' => 'travel_feature',
-			'type' => 'post_object',
-			'instructions' => '',
-			'required' => 1,
-			'conditional_logic' => 0,
-			'wrapper' => array (
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'post_type' => array (
-				0 => 'post',
-				1 => 'city',
-				2 => 'artist',
-				3 => 'event',
-			),
-			'taxonomy' => array (
-				0 => 'category:travel',
-			),
-			'allow_null' => 0,
-			'multiple' => 0,
-			'return_format' => 'object',
-			'ui' => 1,
-		),
-	),
-	'location' => array (
-		array (
-			array (
-				'param' => 'page',
-				'operator' => '==',
-				'value' => '5543',
+		'location' => array(
+			array(
+				array(
+					'param' => 'page',
+					'operator' => '==',
+					'value' => '5543',
+				),
 			),
 		),
-	),
-	'menu_order' => 0,
-	'position' => 'normal',
-	'style' => 'default',
-	'label_placement' => 'top',
-	'instruction_placement' => 'label',
-	'hide_on_screen' => '',
-	'active' => 1,
-	'description' => '',
-));
+		'menu_order' => 0,
+		'position' => 'acf_after_title',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => array(
+			0 => 'the_content',
+		),
+		'active' => 1,
+		'description' => '',
+	));
 
-endif;
+	endif;
