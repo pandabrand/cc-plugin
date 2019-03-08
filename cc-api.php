@@ -180,20 +180,24 @@ function get_locations_by_hotel_id($data) {
   return $hrh_locations;
 }
 
+function deactivated($data) {
+  return ["message" => "no longer active"];
+}
+
 add_action( 'rest_api_init', function () {
   register_rest_route( 'cc-api/v1', '/location-types/', array(
     'methods' => 'GET',
-    'callback' => 'get_location_location_types',
+    'callback' => 'deactivated',
   ) );
 
   register_rest_route( 'cc-api/v1', '/hotels/', array(
     'methods' => 'GET',
-    'callback' => 'get_hrh_cities',
+    'callback' => 'deactivated',
   ) );
 
   register_rest_route( 'cc-api/v1', '/locations/(?P<hotelId>\d+)', array(
     'methods' => 'GET',
-    'callback' => 'get_locations_by_hotel_id',
+    'callback' => 'deactivated',
   ) );
 
 } );
