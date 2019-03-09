@@ -187,12 +187,12 @@ function deactivated($data) {
 add_action( 'rest_api_init', function () {
   register_rest_route( 'cc-api/v1', '/location-types/', array(
     'methods' => 'GET',
-    'callback' => 'get_locations_by_hotel_id',
+    'callback' => 'get_location_location_types',
   ) );
 
   register_rest_route( 'cc-api/v1', '/hotels/', array(
     'methods' => 'GET',
-    'callback' => 'deactivated',
+    'callback' => 'get_hrh_cities',
   ) );
 
   register_rest_route( 'cc-api/v1', '/locations/(?P<hotelId>\d+)', array(
